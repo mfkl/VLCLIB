@@ -124,6 +124,8 @@ namespace WpfVLCVidepLanPOC
 
         void StopButton_Click(object sender, RoutedEventArgs e)
         {
+            if (VideoView.MediaPlayer == null) return;
+
             if (VideoView.MediaPlayer.IsPlaying)
             {
                 VideoView.MediaPlayer.Stop();
