@@ -178,10 +178,10 @@ namespace WpfVLCVidepLanPOC
                 if (!VideoView.MediaPlayer.IsPlaying && (chkStrategy2.IsChecked.Value == false || cmbCaptureMode.SelectedIndex == 0 || cmbCaptureMode.SelectedIndex == 2))
                 {
                     // For Playback Media file
-                    //using (var media = new Media(_libVLC, new Uri("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")))
+                    using (var media = new Media(_libVLC, new Uri("http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4")))
 
                     // For Capture live feed from Camera device
-                    using (var media = new Media(_libVLC, "dshow:// ", FromType.FromLocation))
+                    //using (var media = new Media(_libVLC, "dshow:// ", FromType.FromLocation))
                     {
                         media.AddOption($":dshow-vdev={cmbCaptureCard.Text}");
                         if (string.Compare(cmbCaptureCard.Text, "Integrated Camera") == 0)
