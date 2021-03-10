@@ -426,41 +426,17 @@ namespace WpfVLCVidepLanPOC
         bool _isFullScreen = false;
         private void ExecuteFullScreen()
         {
-            bool isOpenFullScreenPopup = !_isFullScreen;
+            stackPanel.Visibility = Visibility.Collapsed;
+            gridSplitter.Visibility = Visibility.Collapsed;
 
-            double width = this.ActualWidth;
-            double height = this.ActualHeight;
+            VideoGrid.RowDefinitions.RemoveAt(0);
+            txtLogger.Visibility = Visibility.Collapsed;
 
-            if (isOpenFullScreenPopup)
-            {
-                this.primaryGrid.Children.Remove(this.VideoGrid);
+            mainGrid.RowDefinitions.RemoveAt(1);
+            mainGrid.ColumnDefinitions.RemoveAt(0);
 
-                this.popupContainerGrid.Children.Add(this.VideoGrid);
-
-                // Open the popups
-                this.FullScreenPopup.IsOpen = true;
-
-                makePopupFullScreen(FullScreenPopup, this.VideoGrid);
-
-                width = SystemParameters.PrimaryScreenWidth;
-                height = SystemParameters.PrimaryScreenHeight;
-
-            }
-            else
-            {
-                // Close the popups
-                this.FullScreenPopup.IsOpen = false;
-
-                this.popupContainerGrid.Children.Remove(this.VideoGrid);
-
-                this.primaryGrid.Children.Add(this.VideoGrid);
-            }
-            _isFullScreen = isOpenFullScreenPopup;
-
-            if (this.VideoView.IsLoaded)
-            {
-                this.VideoView.RenderSize = new System.Windows.Size(width, height);
-            }
+            WindowState = WindowState.Maximized;
+            WindowStyle = WindowStyle.None;
         }
 
         private void makePopupFullScreen(Popup popup, FrameworkElement startFromElement)

@@ -6,15 +6,7 @@
         xmlns:uc="clr-namespace:LibVLCSharp.WPF;assembly=LibVLCSharp.WPF"
         mc:Ignorable="d" Title="Example2" Height="800" Width="800">
     <Grid>
-        <Popup x:Name="FullScreenPopup" AllowsTransparency="False">
-
-            <Grid x:Name="popupContainerGrid" >
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*"></RowDefinition>
-                </Grid.RowDefinitions>
-            </Grid>
-        </Popup>
-        <Grid>
+        <Grid x:Name="mainGrid">
             <Grid.RowDefinitions>
                 <RowDefinition Height="*"/>
                 <RowDefinition Height="0.3*"/>
@@ -25,7 +17,7 @@
                 <ColumnDefinition Width="*"/>
             </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Vertical" x:Name="test" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+            <StackPanel Grid.Column="0" Grid.Row="0" Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" x:Name="stackPanel">
                 <ComboBox x:Name="cmbCaptureCard" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" SelectedIndex="0"/>
                 <ComboBox x:Name="cmbCaptureMode" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" SelectedIndex="3">
                     <ComboBoxItem Content="Preview"/>
@@ -57,14 +49,14 @@
                 </StackPanel>
                 <Button x:Name="btnAbort" Content="ABORT TEST" Height="25" Width="80" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Click="BtnAbort_Click" />
             </StackPanel>
-            <GridSplitter Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Stretch" Width="2" Background="Silver"/>
+            <GridSplitter Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Stretch" Width="2" Background="Silver" x:Name="gridSplitter"/>
             <Grid  Grid.Row="0" Grid.Column="2" x:Name="primaryGrid" >
                 <Grid x:Name="VideoGrid">
                 <Grid.RowDefinitions>
                     <RowDefinition Height="50"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <Button Content="[FULL]" Margin="10,0" Grid.Row="0" Foreground="Black" Click="Button_Click" Height="50" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left" Background="Red" Opacity="1"/>
+                <Button Content="[FULL]" Margin="10,0" Grid.Row="0" Foreground="Black" Click="Button_Click" Height="50" Width="50" VerticalAlignment="Top" HorizontalAlignment="Left" Background="Red" Opacity="1" x:Name="buttonFull"/>
                 <uc:VideoView Grid.Row="1"  x:Name="VideoView" Background="Transparent" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                     <Grid Background="Transparent" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
                         <Canvas  Grid.Row="0"  Visibility="Visible" Background="LightPink" Opacity="0.5" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"
